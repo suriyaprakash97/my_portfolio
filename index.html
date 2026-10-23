@@ -211,10 +211,12 @@
   .gov li { position: relative; padding-left: 16px; font-size: 0.88rem; line-height: 1.5; color: var(--muted); }
   .gov li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 7px; height: 7px; border-radius: 2px; background: var(--teal); }
 
-  /* Data, Cloud, AI pills */
+  /* Data, Cloud, AI quick links */
   .pillars { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-  .pillars li { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 2px solid var(--line); border-radius: 999px; background: var(--surface); font-family: var(--display); font-weight: 700; }
+  .pillars a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 2px solid var(--line); border-radius: 999px; background: var(--surface); font-family: var(--display); font-weight: 700; text-decoration: none; }
+  .pillars a:hover { border-color: var(--teal); background: var(--teal-soft); }
   .pillars .icon { font-size: 1.25rem; color: var(--teal); }
+  .project:target, .saving:target { outline: 3px solid var(--teal); outline-offset: 5px; border-radius: 18px; }
 
   /* What I do */
   .do { margin-top: 34px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -423,10 +425,10 @@
       <div>
         <h1>I turn complex data into answers you can trust, and make it more efficient to run.</h1>
         <p class="intro">I'm <strong>Suriya</strong>, a solution architect for data, cloud and AI. I design the systems that store and organise a company's data, put AI to work on top of it, and lead the people who build them. I mostly work with healthcare and other industries that have strict data rules.</p>
-        <ul class="pillars" aria-label="What I work on">
-          <li><svg class="icon" aria-hidden="true"><use href="#i-db"/></svg>Data</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>AI</li>
+        <ul class="pillars" aria-label="Jump to my work in each area">
+          <li><a href="#work" title="See my data projects"><svg class="icon" aria-hidden="true"><use href="#i-db"/></svg>Data</a></li>
+          <li><a href="#savings" title="See my cloud savings"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg>Cloud</a></li>
+          <li><a href="#project-ai" title="See my AI project"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>AI</a></li>
         </ul>
         <div class="cta-row">
           <a class="btn" href="#contact"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Contact me</a>
@@ -564,7 +566,7 @@
           </div>
         </article>
 
-        <article class="project">
+        <article class="project" id="project-ai">
           <div class="project-visual">
             <ul class="steps" aria-label="How it works">
               <li class="step"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></div>Ask a question</li>
@@ -610,7 +612,7 @@
     <div class="wrap">
       <div class="sec-head"><span class="sec-icon" aria-hidden="true"><svg class="icon"><use href="#i-chart"/></svg></span><div><h2 id="results-title">Key achievements</h2><p class="lede">Real changes I helped bring about, measured across my projects and roles.</p></div></div>
 
-      <div class="saving">
+      <div class="saving" id="savings">
         <div class="saving-main"><b>$700K+</b><span>saved on cloud and infrastructure costs over about 18 months, including $500K+ in annual cloud savings at ZS</span></div>
         <div class="saving-how">
           <h3>How it was achieved</h3>
