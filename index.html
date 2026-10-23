@@ -195,6 +195,22 @@
   .cert-list h4 { font-family: var(--display); font-size: 0.95rem; margin: 16px 0 0; color: var(--ink); }
   .cert-list h4:first-of-type { margin-top: 12px; }
 
+  /* Architecture view */
+  .arch-title { margin-top: 16px; font-family: var(--display); font-weight: 700; font-size: 0.92rem; color: var(--ink); }
+  .arch { margin-top: 10px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .arch li { display: flex; flex-direction: column; justify-content: center; padding: 6px 10px; border: 1.5px solid var(--ink); border-radius: 8px; font-family: var(--display); font-weight: 600; font-size: 0.82rem; line-height: 1.25; color: var(--ink); background: var(--surface); }
+  .arch li small { margin-top: 2px; font-family: var(--body); font-weight: 400; font-size: 0.74rem; color: var(--muted); }
+  .arch li:not(:last-child)::after { content: ""; display: none; }
+  .arch li + li { position: relative; }
+  .arch li + li::before { content: ""; position: absolute; left: 16px; top: -12px; width: 8px; height: 8px; border-top: 2px solid var(--teal); border-right: 2px solid var(--teal); transform: rotate(135deg); }
+  .focus { margin-top: 10px; font-size: 0.88rem; line-height: 1.5; color: var(--muted); }
+  .focus b { color: var(--ink); font-family: var(--display); }
+
+  /* Governance list */
+  .gov { margin-top: 8px; display: grid; gap: 8px; }
+  .gov li { position: relative; padding-left: 16px; font-size: 0.88rem; line-height: 1.5; color: var(--muted); }
+  .gov li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 7px; height: 7px; border-radius: 2px; background: var(--teal); }
+
   /* Plain-words box */
   .plain { margin-top: 40px; padding: 24px 26px; background: var(--teal-soft); border-radius: 18px; }
   .plain h3 { font-size: 1.25rem; }
@@ -408,7 +424,7 @@
           <img src="profile.png" alt="Portrait of Suriyaprakash Balamurugan" onerror="this.remove()">
         </div>
         <span class="chip-float c1"><span class="dot" aria-hidden="true"></span>Open to work</span>
-        <span class="chip-float c2"><svg class="icon" aria-hidden="true"><use href="#i-cost"/></svg>$700K+ saved</span>
+        <span class="chip-float c2"><svg class="icon" aria-hidden="true"><use href="#i-cost"/></svg>$700K+ total savings</span>
         <span class="chip-float c3"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Leads a team of 9</span>
       </div>
     </div>
@@ -498,6 +514,9 @@
             <details>
               <summary>Technical details</summary>
               <p class="more">Apr 2024 to present. Built to meet GxP, the quality rules that apply to healthcare data.</p>
+              <p class="arch-title">How it is built</p>
+              <ol class="arch" aria-label="Architecture flow"><li>Pipeline orchestration<small>Airflow, AWS</small></li><li>Validation gates<small>data quality, compliance, release readiness</small></li><li>Processing at scale<small>Snowflake, Spark</small></li><li>Monitoring<small>GxP-aligned</small></li></ol>
+              <p class="focus"><b>Design focus.</b> Compliance built into the workflow, 5× the data volume, and lower spend through compute tuning and auto-scheduling.</p>
               <ul class="chips" aria-label="Tools"><li>Python</li><li>Snowflake</li><li>Airflow</li><li>AWS</li><li>Spark</li><li>PySpark</li></ul>
             </details>
           </div>
@@ -527,6 +546,16 @@
             <details>
               <summary>Technical details</summary>
               <p class="more">Nov 2024 to present. Clinical, data and engineering teams working together.</p>
+              <p class="arch-title">How it is built</p>
+              <ol class="arch" aria-label="Architecture flow"><li>Clinical data<small>structured and unstructured</small></li><li>Ingestion and harmonisation<small>PySpark, Workflows</small></li><li>Lakehouse<small>Delta Lake, Unity Catalog</small></li><li>Lineage<small>MLflow</small></li><li>Self-service access<small>Databricks SQL, Genie Space</small></li></ol>
+              <p class="focus"><b>Design focus.</b> Reusable data product patterns, governed lineage and reproducibility, and self-service access for global Medical Affairs teams.</p>
+              <p class="arch-title">Governance and security</p>
+              <ul class="gov" aria-label="Governance and security">
+                <li>Each person sees only the data they are allowed to see. The assistant follows each user's own permissions, including row-level and column-level rules.</li>
+                <li>Access rules are set once, centrally, in Unity Catalog, so the assistant and dashboards cannot bypass them.</li>
+                <li>Answers come from approved, documented tables, with curated definitions and example questions to keep responses consistent.</li>
+                <li>Data lineage and experiment tracking (MLflow) keep results traceable and reproducible, which supports audits.</li>
+              </ul>
               <ul class="chips" aria-label="Tools"><li>Databricks</li><li>Delta Lake</li><li>Unity Catalog</li><li>MLflow</li><li>Genie Space</li><li>PySpark</li></ul>
             </details>
           </div>
@@ -556,6 +585,9 @@
             <details>
               <summary>Technical details</summary>
               <p class="more">Aug 2023 to Mar 2024.</p>
+              <p class="arch-title">How it is built</p>
+              <ol class="arch" aria-label="Architecture flow"><li>Source data</li><li>Automated ingestion and pipeline creation<small>PySpark, Snowpark</small></li><li>Warehouse<small>Snowflake</small></li></ol>
+              <p class="focus"><b>Design focus.</b> Automation first, with SQL execution and warehouse clustering tuned to cut compute use.</p>
               <ul class="chips" aria-label="Tools"><li>PySpark</li><li>Snowflake</li><li>Snowpark</li><li>Dataiku</li><li>AWS</li></ul>
             </details>
           </div>
@@ -572,7 +604,7 @@
         <div>
           <div class="compare" role="img" aria-label="Manual data checking reduced by 65 percent">
             <div class="compare-head"><h3>Manual data checking</h3><b>65% less</b></div>
-            <p class="from">Healthcare data processing</p>
+            <p class="from">Automated checks replaced manual quality review</p>
             <div class="bars" aria-hidden="true">
               <span>Before</span><div class="bar before"><i></i></div>
               <span>After</span><div class="bar after" style="--w:35%"><i></i></div>
@@ -580,7 +612,7 @@
           </div>
           <div class="compare" role="img" aria-label="Manual data setup work reduced by 95 percent">
             <div class="compare-head"><h3>Manual data setup</h3><b>95% less</b></div>
-            <p class="from">Automated data setup</p>
+            <p class="from">Loading data and building data pipelines automatically</p>
             <div class="bars" aria-hidden="true">
               <span>Before</span><div class="bar before"><i></i></div>
               <span>After</span><div class="bar after" style="--w:5%"><i></i></div>
@@ -588,7 +620,7 @@
           </div>
           <div class="compare" role="img" aria-label="Computer power used reduced by 44 percent">
             <div class="compare-head"><h3>Computer power used</h3><b>44% less</b></div>
-            <p class="from">Automated data setup</p>
+            <p class="from">Tuned queries and data warehouse layout</p>
             <div class="bars" aria-hidden="true">
               <span>Before</span><div class="bar before"><i></i></div>
               <span>After</span><div class="bar after" style="--w:56%"><i></i></div>
@@ -597,8 +629,8 @@
         </div>
 
         <div class="big">
-          <div class="big-card sun"><b>$700K+</b><span>in cloud and technology savings, including $500K+ every year</span></div>
-          <div class="big-card"><b>35%</b><span>more dependable systems through stronger technical standards</span></div>
+          <div class="big-card sun"><b>$700K+</b><span>cumulative savings from cloud, workload and infrastructure work, including $500K+ in annual cloud savings at ZS</span></div>
+          <div class="big-card"><b>35%</b><span>higher platform reliability after setting stronger architecture and release standards</span></div>
           <div class="big-card"><b>25%</b><span>faster engineering by using AI tools safely</span></div>
         </div>
       </div>
@@ -631,7 +663,7 @@
           <ul>
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Plan how a company's data and cloud systems fit together, from idea to launch</li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Lead a team of 9 engineers, data experts and designers</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Saved $500K+ a year in cloud costs</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Delivered $500K+ in annual cloud savings through workload optimisation and cost governance</li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Work with clinical and business teams to turn their needs into working systems</li>
           </ul>
         </div>
@@ -675,11 +707,6 @@
             <li>Claude Certified Architect, Professional (to 2027)</li>
             <li>SAFe 6 Practitioner</li>
             <li>Dataiku Core Designer</li>
-          </ul>
-          <h4>Earlier certifications (validity period ended)</h4>
-          <ul class="chips" aria-label="Earlier certifications">
-            <li>AWS Solutions Architect Associate, earned 2021</li>
-            <li>AWS Developer Associate, earned 2021</li>
           </ul>
           <h4>Also completed</h4>
           <ul class="chips" aria-label="Other learning">
